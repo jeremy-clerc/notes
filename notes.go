@@ -122,6 +122,7 @@ func main() {
 		tags    = flag.String("t", "", "Note tags")
 		fromDay = flag.String("from-day", "", "Show all notes since given day")
 	)
+	flag.Parse()
 	if *rootDir == "" {
 		hd, err := os.UserHomeDir()
 		if err != nil {
@@ -129,7 +130,6 @@ func main() {
 		}
 		*rootDir = filepath.Join(hd, ".notes")
 	}
-	flag.Parse()
 
 	if len(flag.Args()) == 0 {
 		showNotes(*rootDir, *fromDay, *tags)
